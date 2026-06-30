@@ -1,0 +1,31 @@
+# Public Data API (Zero-Auth)
+
+While the core API requires a secure `sk_live_` key to manage data, Saint CMS also provides a dedicated **Public API** designed exclusively for your frontend applications (like a Next.js website).
+
+This endpoint requires zero authentication and is completely safe to use in client-side components.
+
+## How It Works
+The Public API has strict security rules built into the Go engine:
+1. **GET Requests Only:** It will automatically reject any attempt to POST, PUT, or DELETE data.
+2. **Auto-Filtering:** It exclusively returns records where `status = 'Published'`. Drafts are completely hidden from the public automatically.
+3. **Open CORS:** It sends an `Access-Control-Allow-Origin: *` header, meaning any frontend domain can fetch this data without browser blocks.
+
+## Fetching Public Data
+
+To fetch published data, append your collection name to the `/api/v1/public/` route.
+
+**Example Request:**
+```javascript
+// Fetching all published blog posts directly from the frontend
+const res = await fetch('http://localhost:3333/api/v1/public/post');
+const data = await res.json();
+
+[
+  {
+    "id": "8a7b6c5d",
+    "title": "Why Go is the Future of the Backend",
+    "status": "Published",
+    "author_id": "usr_master",
+    "created_at": "2026-06-25T14:35:17Z"
+  }
+]

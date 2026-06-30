@@ -1,0 +1,43 @@
+# Cloud Media Pipeline
+
+Saint CMS is engineered for scale. Instead of bloating your local SQLite database with heavy image files, the engine features a hardwired proxy pipeline directly to **Supabase Cloud Storage**.
+
+When a user uploads an image in the Next.js Studio, the Go backend securely streams it to your cloud bucket and returns a permanent, global CDN link.
+
+## One-Time Initialization
+
+Unlike traditional CMS platforms that rely on static `.env` files, Saint CMS handles cloud configuration securely during your initial engine boot.
+
+When you first launch the engine and access the **Next.js Setup Wizard**, you will be prompted to enter your cloud credentials:
+* `Supabase URL`
+* `Supabase Anon Key`
+* `Supabase Bucket Name`
+
+The Go engine securely locks these values directly into the internal SQLite database during initialization. Once the setup is complete, the wizard locks itself permanently, and the engine is fully wired to your cloud storage.
+
+---
+
+## Programmatic Uploads
+
+You can upload files programmatically from any authorized frontend component using the upload endpoint. 
+
+### POST /api/upload
+*(Note: This route is locked and requires your `sk_live_` key).*
+
+**Headers Required:**
+```text
+Authorization: Bearer sk_live_your_api_key_here
+Content-Type: multipart/form-data
+{
+  "status": "success",
+  "url": "[https://your-project.supabase.co/storage/v1/object/public/your-bucket/123456-hero.jpg](https://your-project.supabase.co/storage/v1/object/public/your-bucket/123456-hero.jpg)"
+}
+[
+  {
+    "id": "9b1deb4d",
+    "name": "dashboard-screenshot.png",
+    "size": "1.2 MB",
+    "url": "[https://your-project.supabase.co/storage/v1/object/public/your-bucket/dashboard-screenshot.png](https://your-project.supabase.co/storage/v1/object/public/your-bucket/dashboard-screenshot.png)",
+    "createdAt": "2026-06-25T14:35:17Z"
+  }
+]

@@ -1,0 +1,20 @@
+# One-Click Database Backups
+
+Because Saint CMS uses SQLite, your entire database is securely stored in a single file. This allows the engine to perform instantaneous, zero-downtime backups without requiring external database dumping tools.
+
+## The Snapshot Endpoint
+
+You can trigger a full database backup programmatically. When this endpoint is hit, the Go engine creates a localized timestamped copy of your live database and stores it in the isolated `/backups` directory on your server.
+
+### POST /api/snapshot
+*(Note: This route is strictly locked and requires your `sk_live_` key).*
+
+**Example Request:**
+```javascript
+const res = await fetch('http://localhost:3333/api/snapshot', {
+  method: 'POST',
+  headers: {
+    'Authorization': 'Bearer sk_live_your_api_key_here'
+  }
+});
+const backup = await res.json();

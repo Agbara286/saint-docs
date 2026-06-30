@@ -1,0 +1,19 @@
+# Welcome to Saint CMS
+
+Saint is a lightweight, high-performance headless CMS engineered for modern developers. 
+
+It completely removes the friction of database management by using a single config file to automatically migrate your SQLite database, while serving your data through a blazing-fast Go API.
+
+## The Architecture
+Saint is split into two perfectly synced pieces:
+1. **The Engine:** A single-binary Go backend with an auto-migrating SQLite database.
+2. **The Studio:** A premium, pitch-black Next.js dashboard to manage your content.
+
+---
+
+## Core Capabilities
+
+*   **Zero-Config Schema Syncing:** Define your schema in `saint.config.json`. The Go engine immediately auto-migrates your local SQLite database columns without destructive data loss.
+*   **Instant RESTful API:** The second you boot the binary, optimized REST endpoints are created automatically for your collections.
+*   **Self-Healing Scaffolding:** If a configuration file is accidentally modified or deleted, the binary automatically generates a fresh, production-ready fallback on the next boot.
+*   **Zero Infrastructure Overhead:** Run a full-scale content management system with zero external database dependencies or hefty memory footprints.

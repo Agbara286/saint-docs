@@ -1,0 +1,18 @@
+# API Rate Limiting
+
+To protect your production database from abuse, DDoS attacks, or runaway frontend scripts, Saint CMS features a built-in, IP-based rate limiter. 
+
+The engine automatically tracks incoming request velocities and temporarily blocks IPs that exceed the safe threshold.
+
+## The Limits
+
+By default, the engine restricts traffic to:
+* **5 requests per 10 seconds** per IP address.
+
+If a client exceeds this limit, the server will immediately intercept the request before it reaches the database and return a `429 Too Many Requests` status.
+
+**Example Rejection Response:**
+```json
+{
+  "error": "429 Too Many Requests. Slow down!"
+}

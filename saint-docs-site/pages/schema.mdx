@@ -1,0 +1,29 @@
+# The Dynamic Schema
+
+The core philosophy of Saint CMS is that you should never have to manually write SQL migration files. 
+
+Saint uses a "Config-First" architecture. Your entire database structure is driven by a single JSON file: `saint.config.json`.
+
+## How It Works
+
+When you use the Next.js Studio to create a new collection (like "Blog Posts" or "Products"), the Studio updates the `saint.config.json` file. 
+
+The Go engine constantly watches this file. The millisecond it detects a change, it parses the JSON and automatically runs SQLite `ALTER TABLE` commands to perfectly sync your database.
+
+## Example Configuration
+
+Here is what a standard config file looks like under the hood:
+
+```json filename="saint.config.json"
+{
+  "collections": [
+    {
+      "name": "product",
+      "fields": [
+        { "name": "title", "type": "string" },
+        { "name": "price", "type": "number" },
+        { "name": "in_stock", "type": "boolean" }
+      ]
+    }
+  ]
+}

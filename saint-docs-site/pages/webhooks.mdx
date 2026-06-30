@@ -1,0 +1,34 @@
+# Webhook Engine
+
+Saint CMS is built for the modern Jamstack. Whenever content changes, the engine automatically notifies external services (like Vercel, Netlify, or custom APIs) to trigger static site rebuilds or external synchronization.
+
+## Asynchronous Architecture
+
+Webhooks in Saint CMS are fired completely asynchronously. 
+
+When a user clicks "Save" in the Next.js dashboard, the Go backend immediately returns a success response to the UI. Simultaneously, a background Goroutine silently pings your configured URLs. This guarantees your dashboard never freezes or hangs while waiting for an external server to respond.
+
+## Supported Events
+
+The engine broadcasts three primary lifecycle events:
+* `content.created`
+* `content.updated`
+* `content.deleted`
+
+## The JSON Payload
+
+When an event triggers, Saint CMS sends a POST request to your target URL containing the exact state of the content.
+
+**Example Payload:**
+```json
+{
+  "event": "content.updated",
+  "model": "product",
+  "data": {
+    "id": "8a7b6c5d",
+    "title": "Mechanical Keyboard",
+    "price": 120,
+    "status": "Published"
+  },
+  "timestamp": "2026-06-25T15:00:00Z"
+}

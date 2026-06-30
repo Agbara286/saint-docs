@@ -1,0 +1,38 @@
+# Content Revisions
+
+Mistakes happen. That is why Saint CMS includes a built-in Time Machine. 
+
+Every time a record is updated or deleted, the Go engine silently fires a background task (`takeSnapshot`) to save the exact state of that record into the internal `_saint_revisions` vault before the changes are applied.
+
+## Fetching Revision History
+
+You can fetch the complete history of any specific record using the Revisions endpoint[cite: 23].
+
+### GET /api/revisions
+*(Note: This route is locked and requires your `sk_live_` key).*
+
+**Query Parameters Required[cite: 23]:**
+* `collection`: The name of your model (e.g., `product`)
+* `id`: The unique record ID
+
+**Example Request:**
+```javascript
+const res = await fetch('http://localhost:3333/api/revisions?collection=product&id=8a7b6c5d', {
+  headers: {
+    'Authorization': 'Bearer sk_live_your_api_key_here'
+  }
+});
+const history = await res.json();
+[
+  {
+    "id": 42,
+    "action": "UPDATE",
+    "createdAt": "2026-06-25T15:00:00Z",
+    "data": {
+      "id": "8a7b6c5d",
+      "title": "Old Product Title",
+      "price": 100,
+      "status": "Draft"
+    }
+  }
+]

@@ -1,0 +1,53 @@
+# Deployment
+
+Because Saint CMS achieves its incredible speed by using a local SQLite database (`saint_v3.db`), **you cannot deploy it to serverless platforms like Vercel or Render's Free Tier.** 
+
+Platforms with ephemeral filesystems will permanently delete your database file every time the server sleeps or restarts. To safely deploy Saint, you must use a host that supports **Persistent Volumes**.
+
+---
+
+## Recommended Platforms
+
+### 1. Railway (Easiest DX)
+The closest to the "Vercel experience" for backend apps. It costs pennies per month for lightweight Go binaries.
+* **How-to:** Deploy your Dockerfile and go to your Railway service **Settings** -> **Volumes**. Create a new volume and mount it to `/app` so your database is saved permanently.
+
+### 2. Microsoft Azure (Enterprise Standard)
+For enterprise scalability, you can easily host Saint on Azure using containers.
+* **How-to:** Deploy your Docker container using **Azure App Service** or **Azure Container Instances (ACI)**. You must create an **Azure File Share** in your storage account and mount it to your container's `/app` directory. This ensures your SQLite file persists across container restarts and updates.
+
+### 3. Northflank (Best Free Tier)
+Currently one of the only major PaaS providers that offers a genuinely free tier with a persistent volume. 
+* **How-to:** Create a new service on their free tier, deploy via Docker, and attach a persistent volume to the `/app` path.
+
+### 4. A standard VPS (DigitalOcean / Hetzner)
+The production standard for maximum control.
+* **How-to:** Drop your compiled Linux binary directly onto a $5/month Linux server, run it via `systemd` or `tmux`, and let it stay alive forever.
+
+---
+
+## The Universal Dockerfile
+
+To deploy to Railway, Azure, or Northflank, create a `Dockerfile` in the root of your project:
+
+```dockerfile
+# Use a minimal lightweight Linux image
+FROM debian:bullseye-slim
+
+WORKDIR /app
+
+# Install curl and ca-certificates
+RUN apt-get update && apt-get install -y curl ca-certificates && rm -rf /var/lib/apt/lists/*
+
+# Copy your Next.js dashboard into the container
+COPY ./out ./out
+
+# Download the latest Linux engine from your GitHub Releases
+RUN curl -L -o saint-engine [https://github.com/Agbara286/saint/releases/latest/download/saint-linux-amd64](https://github.com/Agbara286/saint/releases/latest/download/saint-linux-amd64)
+RUN chmod +x saint-engine
+
+# Expose the port
+EXPOSE 3333
+
+# Start the engine
+CMD ["./saint-engine"]

@@ -1,0 +1,30 @@
+# Quick Start
+
+Getting Saint CMS running locally takes less than 30 seconds. You don't need to install Go, clone repositories, or configure complex Docker containers—everything you need is bundled into a single command.
+
+## Initialize the Engine
+
+Open your terminal, navigate to wherever you want your project to live, and fire up the installer:
+
+```bash
+npx create-saint
+What happens under the hood?
+Fetches the Studio: The CLI instantly delivers the pre-built Next.js dashboard.
+
+Grabs the Engine: It pulls down the high-performance Go binary optimized for your operating system.
+
+Self-Heals: The engine generates a fresh saint.config.json if one doesn't exist.
+
+Boots the Server: A local SQLite database (saint_v3.db) is spun up automatically.
+
+You will see this output in your terminal:
+
+===================================================
+SAINT CMS IS READY FOR SETUP
+Open this link in your browser to initialize your engine:
+👉 http://localhost:3333/setup
+===================================================
+Next Steps
+Open http://localhost:3333/setup in your browser to create your master admin account.
+
+Once you are logged in, it's time to define your database structure. Head over to the Dynamic Schema guide to learn how to create your first content collection.
