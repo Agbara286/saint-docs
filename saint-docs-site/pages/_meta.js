@@ -7,9 +7,9 @@ export default {
     "type": "separator",
     "title": "Core Engine"
   },
-  "dynamic-schema": "Dynamic Schema",
-  "content-revisions": "Content Revisions",
-  "cloud-media-pipeline": "Cloud Media Pipeline",
+  "schema": "Schema",
+  "revisions": "Revisions",
+  "cloud-media": "Cloud Media",
 
   "---1": {
     "type": "separator",
@@ -17,7 +17,7 @@ export default {
   },
   "api-reference": "API Reference",
   "public-api": "Public API (Zero-Auth)",
-  "webhook-engine": "Webhook Engine",
+  "webhooks": "Webhook Engine",
   "rate-limiting": "Rate Limiting",
 
   "---2": {
