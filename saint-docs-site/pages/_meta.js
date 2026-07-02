@@ -1,4 +1,4 @@
-{
+export default {
   "introduction": "Introduction",
   "quick-start": "Quick Start",
   "configuration": "Configuration",
@@ -11,7 +11,7 @@
   "content-revisions": "Content Revisions",
   "cloud-media-pipeline": "Cloud Media Pipeline",
 
-  "---": {
+  "---1": {
     "type": "separator",
     "title": "Data & APIs"
   },
@@ -20,7 +20,7 @@
   "webhook-engine": "Webhook Engine",
   "rate-limiting": "Rate Limiting",
 
-  "---": {
+  "---2": {
     "type": "separator",
     "title": "Infrastructure"
   },
