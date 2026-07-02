@@ -14,7 +14,7 @@ When running locally, your API is available at:
 
 To fetch data from a collection, you simply hit the endpoint matching your collection's name. 
 
-### GET /collections/{name}
+### GET `/collections/{name}`
 Retrieves a list of all records in a specific collection.
 
 **Example Request:**
@@ -22,7 +22,6 @@ Retrieves a list of all records in a specific collection.
 // Fetching all products in a Next.js Server Component
 const res = await fetch('http://localhost:3333/api/v1/collections/product');
 const data = await res.json();
-
 {
   "status": "success",
   "data": [
