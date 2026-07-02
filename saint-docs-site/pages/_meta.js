@@ -1,11 +1,12 @@
 export default {
-  "introduction": "Introduction",
+  "index": "Introduction", 
   "quick-start": "Quick Start",
   
   "---": {
     "type": "separator",
     "title": "Core Engine"
   },
+
   "schema": "Dynamic Schema",
   "revisions": "Content Revisions",
   "cloud-media": "Cloud Media Pipeline",
