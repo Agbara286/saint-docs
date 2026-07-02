@@ -1,7 +1,7 @@
 export default {
   "introduction": "Introduction",
   "quick-start": "Quick Start",
-  "configuration": "Configuration",
+ 
   
   "---": {
     "type": "separator",
@@ -25,5 +25,5 @@ export default {
     "title": "Infrastructure"
   },
   "deployment": "Deployment",
-  "database-backups": "Database Backups"
+  "backups":   "Backups"
 }
