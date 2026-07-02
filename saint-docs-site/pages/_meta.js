@@ -1,15 +1,14 @@
 export default {
   "introduction": "Introduction",
   "quick-start": "Quick Start",
- 
   
   "---": {
     "type": "separator",
     "title": "Core Engine"
   },
-  "schema": "Schema",
-  "revisions": "Revisions",
-  "cloud-media": "Cloud Media",
+  "schema": "Dynamic Schema",
+  "revisions": "Content Revisions",
+  "cloud-media": "Cloud Media Pipeline",
 
   "---1": {
     "type": "separator",
@@ -25,5 +24,5 @@ export default {
     "title": "Infrastructure"
   },
   "deployment": "Deployment",
-  "backups":   "Backups"
+  "backups": "Database Backups"
 }
