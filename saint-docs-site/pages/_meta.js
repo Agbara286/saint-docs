@@ -6,7 +6,6 @@ export default {
     "type": "separator",
     "title": "Core Engine"
   },
-
   "schema": "Dynamic Schema",
   "revisions": "Content Revisions",
   "cloud-media": "Cloud Media Pipeline",
@@ -25,5 +24,12 @@ export default {
     "title": "Infrastructure"
   },
   "deployment": "Deployment",
-  "backups": "Database Backups"
+  "backups": "Database Backups",
+
+
+  "---3": {
+    "type": "separator",
+    "title": "Community"
+  },
+  "support": "Support & Community"
 }
