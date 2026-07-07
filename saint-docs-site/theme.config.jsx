@@ -3,7 +3,9 @@ export default {
   project: {
     link: 'https://github.com/Agbara286/saint-cms', 
   },
-  docsRepositoryBase: 'https://github.com/Agbara286/saint-docs',
+  editLink: {
+    component: null
+  },
   useNextSeoProps() {
     return {
       titleTemplate: '%s – Saint CMS'
