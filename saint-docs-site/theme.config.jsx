@@ -1,8 +1,19 @@
 export default {
+  logo: <strong>🕊️ Saint CMS</strong>,
   project: {
-    link: 'https://github.com/Agbara286/saint-cms'
+    link: 'https://github.com/Agbara286/saint-cms', 
   },
-  editLink: {
-    component: null
+  docsRepositoryBase: 'https://github.com/Agbara286/saint-docs/tree/main',
+  useNextSeoProps() {
+    return {
+      titleTemplate: '%s – Saint CMS'
+    }
+  },
+  footer: {
+    text: (
+      <span>
+        MIT {new Date().getFullYear()} © Saint CMS.
+      </span>
+    )
   }
 }
